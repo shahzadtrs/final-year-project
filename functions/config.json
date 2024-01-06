@@ -1,1 +1,6 @@
-[]
+[
+    {
+        "name": "fn_user_sign_in",
+        "private": true
+    }
+]
