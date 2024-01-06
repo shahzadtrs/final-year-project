@@ -13,5 +13,6 @@
   */
 
   exports = (loginPayload) => {
-    return;
+    console.log(JSON.stringify(loginPayload))
+    return ;
   };
