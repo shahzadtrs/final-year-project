@@ -7,5 +7,9 @@
     {
         "name": "tr_create_user",
         "private": true
+    },
+    {
+        "name": "resetFunc",
+        "private": true
     }
 ]
