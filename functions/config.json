@@ -50,5 +50,10 @@
     {
         "name": "tr_delete_user",
         "private": true
+    },
+    {
+        "name": "fn_auth_resetPass_code_verification",
+        "private": false,
+        "disable_arg_logs": true
     }
 ]
