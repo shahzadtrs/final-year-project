@@ -5,7 +5,7 @@
     "config": {
         "operation_type": "CREATE",
         "providers": [
-            "custom-function"
+            "local-userpass"
         ]
     },
     "disabled": false,
