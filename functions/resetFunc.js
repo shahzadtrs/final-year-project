@@ -157,6 +157,12 @@ exports = async ({ token, tokenId, username, password, currentPasswordValid }, s
         // will wait for SDK resetPassword to be called with the token and tokenId
         console.log(JSON.stringify(emailResponse))
         if (emailResponse.status === 200) {
+           context.functions.execute(
+                "sendResetPasswordEmail",
+                username,
+                token,
+                tokenId
+            );
             return { status: 'pending' }
         }
 
