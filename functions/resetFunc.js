@@ -155,6 +155,7 @@ exports = async ({ token, tokenId, username, password, currentPasswordValid }, s
             "fn_email_reset_password", username
         );
         // will wait for SDK resetPassword to be called with the token and tokenId
+        console.log(JSON.stringify(emailResponse))
         if (emailResponse.status === 200) {
             return { status: 'pending' }
         }
