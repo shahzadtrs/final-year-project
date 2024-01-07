@@ -10,6 +10,6 @@
         "config": {
             "authFunctionName": "fn_user_sign_in"
         },
-        "disabled": true
+        "disabled": false
     }
 }
