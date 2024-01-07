@@ -1,6 +1,7 @@
 [
     {
         "name": "fn_user_sign_in",
-        "private": true
+        "private": true,
+        "run_as_system": true
     }
 ]
