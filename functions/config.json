@@ -21,5 +21,10 @@
         "name": "fn_email_templates_get",
         "private": false,
         "disable_arg_logs": true
+    },
+    {
+        "name": "fn_generate_random_code",
+        "private": false,
+        "disable_arg_logs": true
     }
 ]
