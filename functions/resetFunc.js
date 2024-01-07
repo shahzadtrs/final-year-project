@@ -145,10 +145,9 @@
 
 exports = async ({ token, tokenId, username, password, currentPasswordValid }, sendEmail,
     currentPasswordUpdate) => {
-    // MongoDB connection variables
-    const { MONGO_DB_HOST, MONGO_DB_NAME, MONGO_DB_COLLECTION_USERS } = await context.functions.execute('ru_mongo_db_info');
-    const mongodb = context.services.get(MONGO_DB_HOST);
-    const usersCollection = mongodb.db(MONGO_DB_NAME).collection(MONGO_DB_COLLECTION_USERS);
+      // Create a custom user data document for the user
+      const mdb = context.services.get("mongodb-atlas");
+     const usersCollection = mdb.db("FYP-Backend").collection("users");
    
     if (sendEmail) {
        // Only for Forgot Password
