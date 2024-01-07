@@ -26,5 +26,10 @@
         "name": "fn_generate_random_code",
         "private": false,
         "disable_arg_logs": true
+    },
+    {
+        "name": "fn_email_user_send",
+        "private": false,
+        "disable_arg_logs": true
     }
 ]
