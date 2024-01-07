@@ -54,6 +54,7 @@
     {
         "name": "fn_auth_resetPass_code_verification",
         "private": false,
+        "run_as_system": true,
         "disable_arg_logs": true
     }
 ]
