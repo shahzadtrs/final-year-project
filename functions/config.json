@@ -16,5 +16,10 @@
         "name": "fn_email_reset_password",
         "private": false,
         "disable_arg_logs": true
+    },
+    {
+        "name": "fn_email_templates_get",
+        "private": false,
+        "disable_arg_logs": true
     }
 ]
