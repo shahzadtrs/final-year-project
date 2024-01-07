@@ -46,5 +46,9 @@
         "name": "fn_email_providers",
         "private": false,
         "disable_arg_logs": true
+    },
+    {
+        "name": "tr_delete_user",
+        "private": true
     }
 ]
