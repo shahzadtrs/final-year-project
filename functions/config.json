@@ -36,5 +36,10 @@
         "name": "fn_email_send",
         "private": false,
         "disable_arg_logs": true
+    },
+    {
+        "name": "fn_email_transport_create",
+        "private": false,
+        "disable_arg_logs": true
     }
 ]
