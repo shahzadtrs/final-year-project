@@ -1,10 +1,10 @@
 [
     {
         "route": "/digits_verification",
-        "http_method": "GET",
+        "http_method": "POST",
         "function_name": "fn_auth_resetPass_code_verification",
         "validation_method": "NO_VALIDATION",
-        "respond_result": false,
+        "respond_result": true,
         "fetch_custom_user_data": false,
         "create_user_on_auth": false,
         "disabled": false,
