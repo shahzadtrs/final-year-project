@@ -49,8 +49,6 @@ exports = async function ({ query, headers, body }, response) {
         }
     } catch (error) {
         // Error handling
-        const errorLog = await context.functions.execute("ru_error_head");
-        await context.functions.execute("ru_error_foot", error, errorLog);
         return { status: 500, message: "UNKNOWN_SYSTEM_ERROR" };
     }
 };
