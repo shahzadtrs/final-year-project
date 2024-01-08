@@ -42,9 +42,9 @@ exports = async function ({ query, headers, body }, response) {
                     
                 });
 
-                response.setBody(JSON.stringify({status:200,  message: "SUCCESSFULLY_VERIFIED" }));
+                response.setBody({status:200,  message: "SUCCESSFULLY_VERIFIED" });
             } else {
-                response.setBody(JSON.stringify({status: 400, message: "BAD_REQUEST" }));
+                response.setBody({status: 400, message: "BAD_REQUEST" });
             }
         }
     } catch (error) {
