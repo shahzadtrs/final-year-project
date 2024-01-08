@@ -43,10 +43,10 @@ exports = async function ({ query, headers, body }, response) {
                 });
 
                 response.setStatusCode(200);
-                response.setBody(JSON.stringify({ message: "SUCCESSFULLY_VERIFIED" }));
+                response.setBody(JSON.stringify({status:200,  message: "SUCCESSFULLY_VERIFIED" }));
             } else {
                 response.setStatusCode(400);
-                response.setBody(JSON.stringify({ message: "BAD_REQUEST" }));
+                response.setBody(JSON.stringify({status: 400, message: "BAD_REQUEST" }));
             }
         }
     } catch (error) {
