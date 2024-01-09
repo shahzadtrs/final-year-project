@@ -1,0 +1,19 @@
+{
+    "id": "659a3456ade978b3e36b5682",
+    "name": "trigger_create_user",
+    "type": "AUTHENTICATION",
+    "config": {
+        "operation_type": "CREATE",
+        "providers": [
+            "local-userpass"
+        ]
+    },
+    "disabled": false,
+    "event_processors": {
+        "FUNCTION": {
+            "config": {
+                "function_name": "tr_create_user"
+            }
+        }
+    }
+}

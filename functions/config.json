@@ -1,0 +1,60 @@
+[
+    {
+        "name": "fn_user_sign_in",
+        "private": true,
+        "run_as_system": true
+    },
+    {
+        "name": "tr_create_user",
+        "private": true
+    },
+    {
+        "name": "resetFunc",
+        "private": true
+    },
+    {
+        "name": "fn_email_reset_password",
+        "private": false,
+        "disable_arg_logs": true
+    },
+    {
+        "name": "fn_email_templates_get",
+        "private": false,
+        "disable_arg_logs": true
+    },
+    {
+        "name": "fn_generate_random_code",
+        "private": false,
+        "disable_arg_logs": true
+    },
+    {
+        "name": "fn_email_user_send",
+        "private": false,
+        "disable_arg_logs": true
+    },
+    {
+        "name": "fn_email_send",
+        "private": false,
+        "disable_arg_logs": true
+    },
+    {
+        "name": "fn_email_transport_create",
+        "private": false,
+        "disable_arg_logs": true
+    },
+    {
+        "name": "fn_email_providers",
+        "private": false,
+        "disable_arg_logs": true
+    },
+    {
+        "name": "tr_delete_user",
+        "private": true
+    },
+    {
+        "name": "fn_auth_resetPass_code_verification",
+        "private": false,
+        "run_as_system": true,
+        "disable_arg_logs": true
+    }
+]

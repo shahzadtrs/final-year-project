@@ -1,0 +1,19 @@
+{
+    "id": "659afb873f5b4bc6ab6a238c",
+    "name": "trigger_delete_user",
+    "type": "AUTHENTICATION",
+    "config": {
+        "operation_type": "DELETE",
+        "providers": [
+            "local-userpass"
+        ]
+    },
+    "disabled": false,
+    "event_processors": {
+        "FUNCTION": {
+            "config": {
+                "function_name": "tr_delete_user"
+            }
+        }
+    }
+}
