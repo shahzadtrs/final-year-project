@@ -1,0 +1,53 @@
+[
+    {
+        "id": 1,
+        "type": "influencer",
+        "title": "scentsnstories",
+        "profile": "/img/influencers/scents_and_stories.jpg",
+        "social": {
+            "instagram": "https://www.instagram.com/scentsnstories/",
+            "website": "https://kalanel.ir/"
+        }
+    },
+
+    {
+        "id": 2,
+        "type": "influencer",
+        "title": "kalanel.baby",
+        "profile": "/img/influencers/kalanel_shop.jpg",
+        "social": {
+            "instagram": "https://www.instagram.com/baggysociety/",
+            "website": "https://kalanel.ir/"
+        }
+    },
+    {
+        "id": 3,
+        "type": "influencer",
+        "title": "fashionfits.6",
+        "profile": "/img/influencers/fashion_fits.jpg",
+        "social": {
+            "instagram": "https://www.instagram.com/fashionfits.6/",
+            "website": "https://kalanel.ir/"
+        }
+    },
+    {
+        "id": 4,
+        "type": "influencer",
+        "title": "lazarnedkov",
+        "profile": "/img/influencers/lazarndkov.jpg",
+        "social": {
+            "instagram": "https://www.instagram.com/lazarnedkov/",
+            "website": "https://kalanel.ir/"
+        }
+    },
+    {
+        "id": 5,
+        "type": "influencer",
+        "title": "streetstylemales",
+        "profile": "/img/influencers/street_style_main.jpg",
+        "social": {
+            "instagram": "https://www.instagram.com/streetstylemales/",
+            "website": "https://kalanel.ir/"
+        }
+    }
+]

@@ -1,26 +1,45 @@
 import React from 'react'
 import { Avatar, Dropdown } from 'components/ui'
 import withHeaderItem from 'utils/hoc/withHeaderItem'
-import useAuth from 'utils/hooks/useAuth'
-// import { useSelector } from 'react-redux'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import classNames from 'classnames'
 import { HiOutlineUser, HiOutlineLogout } from 'react-icons/hi'
+import { useDispatch, useSelector } from 'react-redux'
+import { userLoggedOut } from 'store/auth/userSlice'
+import { App } from 'realm-web'
 
-const dropdownItemList = []
+const app = new App({ id: 'fyp-backend-huovw' })
+
+const dropdownItemList = [
+    {
+        label: 'Profile',
+        path: '/profile',
+    },
+]
 
 export const UserDropdown = ({ className }) => {
     // bind this
-    // const userInfo = useSelector((state) => state.auth.user)
+    const user = useSelector((state) => state.auth.user)
+    const dispatch = useDispatch()
+    const navigate = useNavigate()
+    const signOut = async () => {
+        try {
+            // app.currentUser && (await app.currentUser.logOut())
 
-    const { signOut } = useAuth()
+            // app.currentUser && dispatch(clearUserAnalyticsDataIntoStore())
+            dispatch(userLoggedOut())
+            !user && navigate(`/home`)
+        } catch (error) {
+            console.log(error)
+        }
+    }
 
     const UserAvatar = (
         <div className={classNames(className, 'flex items-center gap-2')}>
             <Avatar size={32} shape="circle" icon={<HiOutlineUser />} />
             <div className="hidden md:block">
-                <div className="text-xs capitalize">admin</div>
-                <div className="font-bold">User01</div>
+                <div className="text-xs capitalize">User</div>
+                <div className="font-bold">{user.email}</div>
             </div>
         </div>
     )
@@ -37,9 +56,9 @@ export const UserDropdown = ({ className }) => {
                         <Avatar shape="circle" icon={<HiOutlineUser />} />
                         <div>
                             <div className="font-bold text-gray-900 dark:text-gray-100">
-                                User01
+                                User
                             </div>
-                            <div className="text-xs">user01@mail.com</div>
+                            <div className="text-xs">{user.email}</div>
                         </div>
                     </div>
                 </Dropdown.Item>

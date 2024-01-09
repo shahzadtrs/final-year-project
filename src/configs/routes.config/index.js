@@ -7,50 +7,80 @@ export const protectedRoutes = [
     {
         key: 'home',
         path: '/home',
-        component: React.lazy(() => import('views/Home')),
+        component: React.lazy(() => import('views/pages/home/index')),
         authority: [],
-    },
-    /** Example purpose only, please remove */
-    {
-        key: 'singleMenuItem',
-        path: '/single-menu-view',
-        component: React.lazy(() => import('views/demo/SingleMenuView')),
-        authority: [],
+        meta: {
+            layout: 'simple',
+            pageContainerType: 'gutterless',
+            footer: true,
+        },
     },
     {
-        key: 'collapseMenu.item1',
-        path: '/collapse-menu-item-view-1',
-        component: React.lazy(() => import('views/demo/CollapseMenuItemView1')),
-        authority: [],
-    },
-    {
-        key: 'collapseMenu.item2',
-        path: '/collapse-menu-item-view-2',
-        component: React.lazy(() => import('views/demo/CollapseMenuItemView2')),
+        key: 'profile',
+        path: '/profile',
+        component: React.lazy(() => import('views/account/Settings/index')),
         authority: [],
     },
     {
-        key: 'groupMenu.single',
-        path: '/group-single-menu-item-view',
+        key: 'profile-tab',
+        path: '/profile/:tab',
+        component: React.lazy(() => import('views/account/Settings/index')),
+        authority: [],
+    },
+    {
+        key: 'resetPassword',
+        path: `/reset-passwords`,
+        component: React.lazy(() => import('views/auth/ResetPassword')),
+        authority: [],
+    },
+
+    {
+        key: 'brands',
+        path: '/brands',
+        component: React.lazy(() => import('views/pages/brands/index')),
+        authority: [],
+        meta: {
+            layout: 'simple',
+            pageContainerType: 'gutterless',
+            footer: true,
+        },
+    },
+    {
+        key: 'brands/profiles',
+        path: '/brands-profile/:id',
         component: React.lazy(() =>
-            import('views/demo/GroupSingleMenuItemView')
+            import('views/pages/brands/components/BrandsProfile')
         ),
         authority: [],
+        meta: {
+            layout: 'simple',
+            pageContainerType: 'gutterless',
+            footer: true,
+        },
+    },
+
+    {
+        key: 'influencers',
+        path: '/influencers',
+        component: React.lazy(() => import('views/pages/Influencers/index')),
+        authority: [],
+        meta: {
+            layout: 'simple',
+            pageContainerType: 'gutterless',
+            footer: true,
+        },
     },
     {
-        key: 'groupMenu.collapse.item1',
-        path: '/group-collapse-menu-item-view-1',
+        key: 'influencers/profile',
+        path: '/influencer-profile/:id',
         component: React.lazy(() =>
-            import('views/demo/GroupCollapseMenuItemView1')
+            import('views/pages/Influencers/components/InfluencerProfile')
         ),
         authority: [],
-    },
-    {
-        key: 'groupMenu.collapse.item2',
-        path: '/group-collapse-menu-item-view-2',
-        component: React.lazy(() =>
-            import('views/demo/GroupCollapseMenuItemView2')
-        ),
-        authority: [],
+        meta: {
+            layout: 'simple',
+            pageContainerType: 'gutterless',
+            footer: true,
+        },
     },
 ]

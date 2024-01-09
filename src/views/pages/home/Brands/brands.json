@@ -1,0 +1,52 @@
+[
+    {
+        "id": 1,
+        "type": "brand",
+        "title": "kalanel.baby",
+        "profile": "/img/brands/kalanel_shop.jpg",
+        "social": {
+            "instagram": "https://www.instagram.com/kalanel.baby?igsh=NjJkbzV5dGFsMHAz",
+            "website": "https://kalanel.ir/"
+        }
+    },
+    {
+        "id": 2,
+        "type": "brand",
+        "title": "fashiontoasttt",
+        "profile": "/img/brands/fashion_toast.jpg",
+        "social": {
+            "instagram": "https://www.instagram.com/fashiontoasttt/",
+            "website": "https://kalanel.ir/"
+        }
+    },
+    {
+        "id": 3,
+        "type": "brand",
+        "title": "thebodyessential.pk",
+        "profile": "/img/brands/Be.jpg",
+        "social": {
+            "instagram": "https://www.instagram.com/thebodyessential.pk/",
+            "website": "https://kalanel.ir/"
+        }
+    },
+    {
+        "id": 4,
+        "type": "brand",
+        "title": "decentfashioon",
+        "profile": "/img/brands/decent_fashion.jpg",
+        "social": {
+            "instagram": "https://www.instagram.com/decentfashioon/",
+            "website": "https://kalanel.ir/"
+        }
+    },
+    {
+        "id": 5,
+        "type": "brand",
+        "title": "streetfashions._",
+        "profile": "/img/brands/street_fashion.jpg",
+        "social": {
+            "instagram": "https://www.instagram.com/streetfashions._/",
+            "website": "https://kalanel.ir/"
+        }
+    }
+]

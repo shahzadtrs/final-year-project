@@ -1,17 +1,19 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Input, Button, FormItem, FormContainer, Alert } from 'components/ui'
 import { PasswordInput, ActionLink } from 'components/shared'
 import useTimeOutMessage from 'utils/hooks/useTimeOutMessage'
 import { Field, Form, Formik } from 'formik'
 import * as Yup from 'yup'
-import useAuth from 'utils/hooks/useAuth'
+import { t } from 'i18next'
+import { App } from 'realm-web'
 
 const validationSchema = Yup.object().shape({
-    userName: Yup.string().required('Please enter your user name'),
     email: Yup.string()
-        .email('Invalid email')
+        .email('Invalid Email')
         .required('Please enter your email'),
-    password: Yup.string().required('Please enter your password'),
+    password: Yup.string()
+        .required('Please enter your password')
+        .min(6, 'Password must be at least 6 characters'),
     confirmPassword: Yup.string().oneOf(
         [Yup.ref('password'), null],
         'Your passwords do not match'
@@ -19,26 +21,51 @@ const validationSchema = Yup.object().shape({
 })
 
 const SignUpForm = (props) => {
-    const { disableSubmit = false, className, signInUrl = '/sign-in' } = props
+    const app = new App({ id: 'fyp-backend-huovw' })
 
-    const { signUp } = useAuth()
+    const {
+        disableSubmit = false,
+        className,
+        signInUrl = `/sign-in`,
+        setDisplaySignInText,
+    } = props
 
     const [message, setMessage] = useTimeOutMessage()
+    const [emailSent, setEmailSent] = useState(false)
 
     const onSignUp = async (values, setSubmitting) => {
-        const { userName, password, email } = values
+        const { email, password } = values
         setSubmitting(true)
-        const result = await signUp({ userName, password, email })
 
-        if (result.status === 'failed') {
-            setMessage(result.message)
+        try {
+            await app.emailPasswordAuth.registerUser({
+                email,
+                password,
+            })
+
+            setDisplaySignInText(false)
+            setEmailSent(true)
+        } catch (err) {
+            setEmailSent(false)
+            setMessage(err && err.error.toString())
+            setSubmitting(false)
         }
 
         setSubmitting(false)
     }
-
     return (
         <div className={className}>
+            <div className="mb-6">
+                {emailSent && (
+                    <>
+                        <h3 className="mb-1">Check your email</h3>
+                        <p>
+                            We have sent a confirmation email to your email
+                            inbox
+                        </p>
+                    </>
+                )}
+            </div>
             {message && (
                 <Alert className="mb-4" type="danger" showIcon>
                     {message}
@@ -46,10 +73,9 @@ const SignUpForm = (props) => {
             )}
             <Formik
                 initialValues={{
-                    userName: 'admin1',
-                    password: '123Qwe1',
-                    confirmPassword: '123Qwe1',
-                    email: 'test@testmail.com',
+                    email: '',
+                    password: '',
+                    confirmPassword: '',
                 }}
                 validationSchema={validationSchema}
                 onSubmit={(values, { setSubmitting }) => {
@@ -63,71 +89,60 @@ const SignUpForm = (props) => {
                 {({ touched, errors, isSubmitting }) => (
                     <Form>
                         <FormContainer>
-                            <FormItem
-                                label="User Name"
-                                invalid={errors.userName && touched.userName}
-                                errorMessage={errors.userName}
-                            >
-                                <Field
-                                    type="text"
-                                    autoComplete="off"
-                                    name="userName"
-                                    placeholder="User Name"
-                                    component={Input}
-                                />
-                            </FormItem>
-                            <FormItem
-                                label="Email"
-                                invalid={errors.email && touched.email}
-                                errorMessage={errors.email}
-                            >
-                                <Field
-                                    type="email"
-                                    autoComplete="off"
-                                    name="email"
-                                    placeholder="Email"
-                                    component={Input}
-                                />
-                            </FormItem>
-                            <FormItem
-                                label="Password"
-                                invalid={errors.password && touched.password}
-                                errorMessage={errors.password}
-                            >
-                                <Field
-                                    autoComplete="off"
-                                    name="password"
-                                    placeholder="Password"
-                                    component={PasswordInput}
-                                />
-                            </FormItem>
-                            <FormItem
-                                label="Confirm Password"
-                                invalid={
-                                    errors.confirmPassword &&
-                                    touched.confirmPassword
-                                }
-                                errorMessage={errors.confirmPassword}
-                            >
-                                <Field
-                                    autoComplete="off"
-                                    name="confirmPassword"
-                                    placeholder="Confirm Password"
-                                    component={PasswordInput}
-                                />
-                            </FormItem>
+                            <div className={emailSent ? 'hidden' : ''}>
+                                <FormItem
+                                    label="Email"
+                                    invalid={errors.email && touched.email}
+                                    errorMessage={errors.email}
+                                >
+                                    <Field
+                                        type="email"
+                                        autoComplete="off"
+                                        name="email"
+                                        placeholder="Email"
+                                        component={Input}
+                                    />
+                                </FormItem>
+                                <FormItem
+                                    label="Password"
+                                    invalid={
+                                        errors.password && touched.password
+                                    }
+                                    errorMessage={errors.password}
+                                >
+                                    <Field
+                                        autoComplete="off"
+                                        name="password"
+                                        placeholder="Password"
+                                        component={PasswordInput}
+                                    />
+                                </FormItem>
+                                <FormItem
+                                    label="Confirm Password"
+                                    invalid={
+                                        errors.confirmPassword &&
+                                        touched.confirmPassword
+                                    }
+                                    errorMessage={errors.confirmPassword}
+                                >
+                                    <Field
+                                        autoComplete="off"
+                                        name="confirmPassword"
+                                        placeholder="Confirm Password"
+                                        component={PasswordInput}
+                                    />
+                                </FormItem>
+                            </div>
                             <Button
                                 block
-                                loading={isSubmitting}
+                                // loading={isSubmitting}
                                 variant="solid"
                                 type="submit"
                             >
-                                {isSubmitting
-                                    ? 'Creating Account...'
-                                    : 'Sign Up'}
+                                {emailSent ? 'Resend Email' : 'Sign Up'}
                             </Button>
                             <div className="mt-4 text-center">
-                                <span>Already have an account? </span>
+                                <span>Already have an account?</span>
                                 <ActionLink to={signInUrl}>Sign in</ActionLink>
                             </div>
                         </FormContainer>

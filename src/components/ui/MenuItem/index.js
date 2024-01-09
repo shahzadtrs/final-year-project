@@ -21,6 +21,7 @@ const MenuItem = React.forwardRef((props, ref) => {
     const menuItemHoverClass = `menu-item-hoverable`
     const disabledClass = 'menu-item-disabled'
     const menuItemClass = classNames(
+        'px-12',
         'menu-item',
         `menu-item-${variant}`,
         isActive && menuItemActiveClass,
