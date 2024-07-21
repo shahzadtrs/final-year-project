@@ -1,4 +1,5 @@
 exports = async function(brands){
+  console.log(JSON.stringify(brands))
   // This default function will get a value and find a document in MongoDB
   // To see plenty more examples of what you can do with functions see: 
   // https://www.mongodb.com/docs/atlas/app-services/functions/
