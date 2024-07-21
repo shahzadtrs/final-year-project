@@ -21,7 +21,6 @@ exports = async function(brands){
   try {
     // Perform bulkWrite operation
     const result = await collection.bulkWrite(bulkOperations);
-    console.log(`Matched ${result.matchedCount} documents and modified ${result.modifiedCount} documents`);
     console.log(`Upserted ${result.upsertedCount} documents`);
     return result;
   } catch (err) {
