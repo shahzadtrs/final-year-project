@@ -81,5 +81,10 @@
         "name": "fn_influencers_view",
         "private": false,
         "disable_arg_logs": true
+    },
+    {
+        "name": "fn_influencers_view_one",
+        "private": false,
+        "disable_arg_logs": true
     }
 ]
