@@ -21,7 +21,6 @@ exports = async function(brands){
   try {
     // Perform bulkWrite operation
     const result = await collection.bulkWrite(bulkOperations);
-    console.log(`Upserted ${result.upsertedCount} documents`);
     return result;
   } catch (err) {
     console.error("Failed to insert or update documents", err);
