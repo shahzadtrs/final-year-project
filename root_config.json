@@ -1,8 +1,5 @@
 {
-    "app_id": "fyp-backend-huovw",
-    "config_version": 20210101,
     "name": "FYP-Backend",
-    "location": "SG",
     "provider_region": "aws-ap-southeast-1",
     "deployment_model": "LOCAL",
     "environment": "development"
