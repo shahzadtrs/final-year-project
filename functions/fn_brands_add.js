@@ -9,13 +9,23 @@ exports = async function(brands){
   // Get a collection from the context
   var collection = context.services.get(serviceName).db(dbName).collection(collName);
   
+  // Create an array of bulk operations
+  const bulkOperations = brands.map(brand => ({
+    updateOne: {
+      filter: { title: brand.title },
+      update: { $set: brand },
+      upsert: true
+    }
+  }));
+  
   try {
-    // Insert the array of brands into the collection using insertMany
-    const result = await collection.insertMany(brands);
-    console.log(`Inserted ${result.insertedCount} documents`);
+    // Perform bulkWrite operation
+    const result = await collection.bulkWrite(bulkOperations);
+    console.log(`Matched ${result.matchedCount} documents and modified ${result.modifiedCount} documents`);
+    console.log(`Upserted ${result.upsertedCount} documents`);
     return result;
   } catch (err) {
-    console.error("Failed to insert documents", err);
+    console.error("Failed to insert or update documents", err);
     return { error: err.toString() };
   }
 };
