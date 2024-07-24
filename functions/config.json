@@ -96,5 +96,10 @@
         "name": "fn_brands_view_top",
         "private": false,
         "disable_arg_logs": true
+    },
+    {
+        "name": "samar",
+        "private": false,
+        "disable_arg_logs": true
     }
 ]
