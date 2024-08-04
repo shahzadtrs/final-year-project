@@ -107,5 +107,10 @@
         "private": false,
         "run_as_system": true,
         "disable_arg_logs": true
+    },
+    {
+        "name": "fn_brands_view_http",
+        "private": false,
+        "disable_arg_logs": true
     }
 ]
