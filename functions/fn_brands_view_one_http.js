@@ -1,32 +1,42 @@
-// This function is the endpoint's request handler.
-exports = function({ query, headers, body}, response) {
-    // Data can be extracted from the request as follows:
+exports = async function(req, res) {
+  // Check if the request method is POST
+  if (req.method !== 'POST') {
+    res.setStatusCode(405); // Method Not Allowed
+    res.setHeader("Content-Type", "application/json");
+    res.setBody(JSON.stringify({ error: "Only POST method is allowed" }));
+    return;
+  }
 
-    // Query params, e.g. '?arg1=hello&arg2=world' => {arg1: "hello", arg2: "world"}
-    const {arg1, arg2} = query;
+  // Parse the request body to get the ID
+  const { id } = JSON.parse(req.body.text());
 
-    // Headers, e.g. {"Content-Type": ["application/json"]}
-    const contentTypes = headers["Content-Type"];
-
-    // Raw request body (if the client sent one).
-    // This is a binary object that can be accessed as a string using .text()
-    const reqBody = body;
-
-    console.log("arg1, arg2: ", arg1, arg2);
-    console.log("Content-Type:", JSON.stringify(contentTypes));
-    console.log("Request body:", reqBody);
-
-    // You can use 'context' to interact with other application features.
-    // Accessing a value:
-    // var x = context.values.get("value_name");
-
-    // Querying a mongodb service:
-    // const doc = context.services.get("mongodb-atlas").db("dbname").collection("coll_name").findOne();
-
-    // Calling a function:
-    // const result = context.functions.execute("function_name", arg1, arg2);
-
-    // The return value of the function is sent as the response back to the client
-    // when the "Respond with Result" setting is set.
-    return  "Hello World!";
+  // Define the MongoDB service name, database name, and collection name
+  const serviceName = "mongodb-atlas";
+  const dbName = "FYP-Backend";
+  const collName = "brands";
+  
+  // Get a collection from the context
+  const collection = context.services.get(serviceName).db(dbName).collection(collName);
+  
+  try {
+    // Find a single document by its ID
+    const brand = await collection.findOne({ id });
+    
+    if (brand) {
+      console.log(`Found brand with ID ${id}`);
+      res.setStatusCode(200);
+      res.setHeader("Content-Type", "application/json");
+      res.setBody(JSON.stringify(brand));
+    } else {
+      console.log(`No brand found with ID ${id}`);
+      res.setStatusCode(404); // Not Found
+      res.setHeader("Content-Type", "application/json");
+      res.setBody(JSON.stringify({ error: "No brand found with the specified ID" }));
+    }
+  } catch (err) {
+    console.error("Failed to retrieve document", err);
+    res.setStatusCode(500); // Internal Server Error
+    res.setHeader("Content-Type", "application/json");
+    res.setBody(JSON.stringify({ error: err.toString() }));
+  }
 };
