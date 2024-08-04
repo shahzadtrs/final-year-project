@@ -101,5 +101,10 @@
         "name": "samar",
         "private": false,
         "disable_arg_logs": true
+    },
+    {
+        "name": "fn_brands_view_top_http",
+        "private": false,
+        "disable_arg_logs": true
     }
 ]
