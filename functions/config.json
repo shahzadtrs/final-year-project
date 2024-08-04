@@ -105,6 +105,7 @@
     {
         "name": "fn_brands_view_top_http",
         "private": false,
+        "run_as_system": true,
         "disable_arg_logs": true
     }
 ]
