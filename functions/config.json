@@ -119,5 +119,10 @@
         "private": false,
         "run_as_system": true,
         "disable_arg_logs": true
+    },
+    {
+        "name": "fn_influencers_view_top_http",
+        "private": false,
+        "disable_arg_logs": true
     }
 ]
