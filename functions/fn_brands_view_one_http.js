@@ -1,11 +1,5 @@
 exports = async function(req, res) {
-  // Check if the request method is POST
-  if (req.method !== 'POST') {
-    res.setStatusCode(405); // Method Not Allowed
-    res.setHeader("Content-Type", "application/json");
-    res.setBody(JSON.stringify({ error: "Only POST method is allowed" }));
-    return;
-  }
+  
 
   // Parse the request body to get the ID
   const { id } = JSON.parse(req.body.text());
