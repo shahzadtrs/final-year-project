@@ -9,7 +9,7 @@ exports = async function(checkboxList){
     // Update the user's role using the value from checkboxList[0]
     const updateCurrentUser = await usersCollection.updateOne(
         { uuid: context.user.id }, // Filter to find the correct user
-        { $set: { role: checkboxList[0] } } // Update the role field
+        { $set: { role: checkboxList } } // Update the role field
     );
 
     return updateCurrentUser; // Optionally return the result of the update operation
