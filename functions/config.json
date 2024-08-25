@@ -131,5 +131,10 @@
         "private": false,
         "run_as_system": true,
         "disable_arg_logs": true
+    },
+    {
+        "name": "fn_auth_custom_data_add",
+        "private": false,
+        "disable_arg_logs": true
     }
 ]
